@@ -1,0 +1,6 @@
+.DS_Store
+dist/
+entitlements.mac.plist
+hidden.js
+node_modules/
+notarize.js
