@@ -88,7 +88,7 @@ if you want to convert multiple files add an array of objects like this:
 
 The key-values used in the fileData object are :
 ```
-FILE_PATH, // string
+  FILE_PATH, // string
     FILE_NAME, // string
     QUALITY, // integer
     OUTPUT_PATH, // string, undefined output in the current folder
