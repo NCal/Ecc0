@@ -2,7 +2,7 @@
 
 ## Ecc0
 
-Ecc0 is an open source FFmpeg boiler plate of sorts for Node.js which interacts with `fluent-ffmpeg`. 
+Ecc0 is an open source audio conversion boiler plate of sorts for Node.js. It's powered by Ffmpeg & fluent-ffmpeg.
 
 It's under the GPL-2.0 license as it interacts directly with FFMPEG binaries.
 
