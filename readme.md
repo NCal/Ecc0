@@ -1,16 +1,18 @@
 ### Ecc0 
 
-## Ecc0
-
 Ecc0 is an open source audio conversion boiler plate of sorts for Node.js. It's powered by Ffmpeg & fluent-ffmpeg.
 
 It's under the GPL-2.0 license as it interacts directly with FFMPEG binaries.
 
 Binaries for `Silicon` and `Intel` Macs are included, but feel free to use whatever binaries you want.
 
+#### Working with Ecc0
+
+To get started clone this repo and `npm install`.
+
 There are two JS files of interest: 
 
-#### 1. Codec_map.js
+##### 1. Codec_map.js
 
 Codec_map.js contains the codecs used to convert files. 
 The map currently contains the following codecs, but feel free to add any codecs you want to use in your app. 
@@ -33,7 +35,7 @@ const codec_map = {
 }
 ```
 
-#### 2. Ecc0.js
+##### 2. Ecc0.js
 
 ecc0.js is the main file that interacts with FFMPEG and handles the conversion logic.
 
