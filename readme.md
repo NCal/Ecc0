@@ -39,52 +39,12 @@ const codec_map = {
 
 ecc0.js is the file that interacts with FFMPEG and handles the conversion logic.
 
-To start converting files you simply pass a `fileData` object (or array of objects) to the `handleAudioFiles` function which will kick of conversion.
+To start converting files you simply pass a `fileData` object (or array of objects) to the `handleAudioFiles` function which will kick of conversion:
 ```js
 handleAudioFiles(fileData);
 ```
 
-
-##### 3. main.js
-
-main.js is where the electron app is created. 
-
-It's important to note that there is no event handler currently set up to call `handleAudioFiles` inside main.js. 
-
-An example of how to add one is below:
-
-```js
-  // File selected event listener created with ipcMain
-  ipcMain.on('file-selected', async (event, fileData) => {
-    console.log('file selected event', event,  fileData);
-    let ecc0;
-    const ecc0Path = './public/ecc0.js';
-
-    try {
-      //make sure ecc0 exists
-      await fs.promises.access(ecc0Path, fs.constants.F_OK | fs.constants.R_OK);
-      Ecc0 = require(ecc0Path);
-
-      // call handleAudioFiles:
-      Ecc0.handleAudioFiles(event, fileData);
-    } catch (error) {
-      if (error.code === 'ENOENT') {
-        console.error('File does not exist:', error.message);
-      } else {
-        console.error('Error checking file:', error.message);
-      }
-    }
-  });
-```
-
-Because this app is not asar-d you can also call ecc0 functions from a separate program after the app is built and installed, like this:
-```js
-    const ecc0Path = '/Applications/Ecc0.app/Contents/Resources/app/public/ecc0.js';
-    Ecc0 = require(ecc0Path);
-    Ecc0.handleAudioFiles(event, fileData);
-```
-
-#### fileData structure
+##### fileData structure
 
 If you want to convert one file, pass a singular object like this:
 
@@ -137,6 +97,46 @@ The key-values used in the fileData object are :
     BITRATE, // string
     SAMPLERATE, // integer
     CHANNELS // integer
+```
+
+
+##### 3. main.js
+
+main.js is where the electron app is created. 
+
+It's important to note that there is no event handler currently set up to call `handleAudioFiles` inside main.js. 
+
+An example of how to add one is below:
+
+```js
+  // File selected event listener created with ipcMain
+  ipcMain.on('file-selected', async (event, fileData) => {
+    console.log('file selected event', event,  fileData);
+    let ecc0;
+    const ecc0Path = './public/ecc0.js';
+
+    try {
+      //make sure ecc0 exists
+      await fs.promises.access(ecc0Path, fs.constants.F_OK | fs.constants.R_OK);
+      Ecc0 = require(ecc0Path);
+
+      // call handleAudioFiles:
+      Ecc0.handleAudioFiles(event, fileData);
+    } catch (error) {
+      if (error.code === 'ENOENT') {
+        console.error('File does not exist:', error.message);
+      } else {
+        console.error('Error checking file:', error.message);
+      }
+    }
+  });
+```
+
+Because this app is not asar-d you can also call ecc0 functions from a separate program after the app is built and installed, like this:
+```js
+    const ecc0Path = '/Applications/Ecc0.app/Contents/Resources/app/public/ecc0.js';
+    Ecc0 = require(ecc0Path);
+    Ecc0.handleAudioFiles(event, fileData);
 ```
 
 #### Lossless vs  Lossy vs VBR
