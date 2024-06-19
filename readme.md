@@ -132,7 +132,7 @@ The key-values used in the fileData object are :
     FILE_PATH, // string
     FILE_NAME, // string
     QUALITY, // integer
-    OUTPUT_PATH, // string, undefined output in the current folder
+    OUTPUT_PATH, // string, (if undefined, the current directory is used)
     OUTPUT_TYPE, // string
     BITRATE, // string
     SAMPLERATE, // integer
