@@ -39,7 +39,7 @@ const codec_map = {
 
 ecc0.js is the file that interacts with FFMPEG and handles the conversion logic.
 
-To start converting files you simply pass a `fileData` object (or array of objects) to the `handleAudioFiles` function which will kick of conversion:
+To start converting files you simply pass a `fileData` object (or array of objects) to the `handleAudioFiles` function which will kick off conversion:
 ```js
 handleAudioFiles(fileData);
 ```
